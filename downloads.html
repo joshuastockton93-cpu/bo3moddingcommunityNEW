@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Downloads - BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">BO3 MODDING HUB</div>
+    
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="mods.html">Mods</a>
+            <a href="tutorials.html">Tutorials</a>
+            <a href="tools.html">Tools</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="community.html">Community</a>
+    
+            <!-- ▼ NEW INFO DROPDOWN ▼ -->
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Info</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="credits.html">Credits</a>
+                    <a href="external-links.html">External Links Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                </div>
+            </div>
+            <!-- ▲ END DROPDOWN ▲ -->
+    
+            <div id="dynamic-nav" class="nav-right"></div> <!-- KEEP THIS -->
+        </nav>
+    </header>
+    
+
+<section class="page-header">
+    <h1>Downloads</h1>
+    <p>Tools, utilities, prefabs, and assets for Black Ops 3 modding.</p>
+</section>
+
+<section class="list-section">
+
+    <h2>Official Tools</h2>
+    <div class="list-card">
+        <h3>BO3 Mod Tools (Steam)</h3>
+        <p>The official mod tools package for Black Ops 3.</p>
+        <a class="btn" href="#">Download</a>
+    </div>
+
+    <h2>Community Tools</h2>
+    <div class="list-card">
+        <h3>Radiant Helper</h3>
+        <p>Improves workflow and speeds up mapping tasks.</p>
+        <a class="btn" href="#">Download</a>
+    </div>
+
+    <div class="list-card">
+        <h3>Asset Extractor</h3>
+        <p>Extract models, textures, and sounds from game files.</p>
+        <a class="btn" href="#">Download</a>
+    </div>
+
+    <h2>Prefabs & Templates</h2>
+    <div class="list-card">
+        <h3>Starter Room Template</h3>
+        <p>A clean, ready-to-use Radiant room for new maps.</p>
+        <a class="btn" href="#">Download</a>
+    </div>
+
+</section>
+<script>
+    async function updateNavbar() {
+        const res = await fetch("/account");
+        const data = await res.json();
+    
+        const nav = document.getElementById("dynamic-nav");
+    
+        if (!nav) return;
+    
+        if (data.loggedIn) {
+            nav.innerHTML = `
+                <a href="account.html">Account</a>
+                <a href="#" id="logoutLink">Logout</a>
+            `;
+    
+            document.getElementById("logoutLink").addEventListener("click", async () => {
+                await fetch("/logout", { method: "POST" });
+                window.location.href = "login.html";
+            });
+    
+        } else {
+            nav.innerHTML = `
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            `;
+        }
+    }
+    
+    updateNavbar();
+    </script>
+    
+<footer>
+    <p>© 2026 BO3 Modding Hub</p>
+</footer>
+
+</body>
+</html>

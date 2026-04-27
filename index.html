@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">BO3 MODDING HUB</div>
+    
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="mods.html">Mods</a>
+            <a href="tutorials.html">Tutorials</a>
+            <a href="tools.html">Tools</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="community.html">Community</a>
+    
+            <!-- ▼ NEW INFO DROPDOWN ▼ -->
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Info</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="credits.html">Credits</a>
+                    <a href="external-links.html">External Links Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                </div>
+            </div>
+            <!-- ▲ END DROPDOWN ▲ -->
+    
+            <div id="dynamic-nav" class="nav-right"></div> <!-- KEEP THIS -->
+        </nav>
+    </header>
+
+<section class="hero">
+    <h1>Black Ops 3 Mod Tools</h1>
+    <p>Your central hub for downloads, tutorials, and modding resources.</p>
+    <div class="buttons">
+        <a class="btn" href="downloads.html">Download Tools</a>
+        <a class="btn" href="help.html">Beginner Guide</a>
+        <a class="btn" href="help.html">Mapping Tutorials</a>
+        <a class="btn" href="help.html">Scripting Docs</a>
+    </div>
+</section>
+
+<section class="category-grid">
+    <h2 class="section-title">Browse by Category</h2>
+
+    <div class="home-container">
+
+    <!-- Essentials -->
+    <div class="home-card">
+        <h2>Essentials</h2>
+        <p>Core packs, required files, base assets.</p>
+        <a class="btn" href="mods.html?filter=essentials">Browse</a>
+    </div>
+
+    <!-- Zombies -->
+    <div class="home-card">
+        <h2>Zombies</h2>
+        <p>Zombie models, animations, AI, variants.</p>
+        <a class="btn" href="mods.html?filter=zombies">Browse</a>
+    </div>
+
+    <!-- Weapons -->
+    <div class="home-card">
+        <h2>Weapons</h2>
+        <p>Guns, melee, attachments, animations.</p>
+        <a class="btn" href="mods.html?filter=weapons">Browse</a>
+    </div>
+
+    <!-- Materials -->
+    <div class="home-card">
+        <h2>Materials</h2>
+        <p>FX, textures, decals, shaders.</p>
+        <a class="btn" href="mods.html?filter=materials">Browse</a>
+    </div>
+
+    <!-- Player Character -->
+    <div class="home-card">
+        <h2>Player Character</h2>
+        <p>Characters, zombies, NPCs.</p>
+        <a class="btn" href="mods.html?filter=player-models">Browse</a>
+    </div>
+
+    <!-- Tools -->
+    <div class="home-card">
+        <h2>Tools</h2>
+        <p>Extractors, editors, utilities.</p>
+        <a class="btn" href="mods.html?filter=tools">Browse</a>
+    </div>
+</div>
+</section>
+
+
+
+
+<!-- ⭐ WHAT'S NEW SECTION ⭐ -->
+<section class="container">
+    <h2 class="section-title">What's New?</h2>
+
+    <div class="news-card">
+        <ul>
+            <li>New MW23 & BO6 Weapon Pack added</li>
+            <li>Updated World at War weapon sets with attachments</li>
+            <li>New zombie model packs released</li>
+            <li>Homepage improvements and new sections added</li>
+            <li>Prefabs and FX packs updated with new assets</li>
+        </ul>
+    </div>
+</section>
+<script>
+    async function updateNavbar() {
+        const res = await fetch("/account");
+        const data = await res.json();
+    
+        const nav = document.getElementById("dynamic-nav");
+    
+        if (!nav) return;
+    
+        if (data.loggedIn) {
+            nav.innerHTML = `
+                <a href="account.html">Account</a>
+                <a href="#" id="logoutLink">Logout</a>
+            `;
+    
+            document.getElementById("logoutLink").addEventListener("click", async () => {
+                await fetch("/logout", { method: "POST" });
+                window.location.href = "login.html";
+            });
+    
+        } else {
+            nav.innerHTML = `
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            `;
+        }
+    }
+    
+    updateNavbar();
+    </script>
+    
+<footer class="site-footer">
+    <p class="footer-title">BO3 Modding Hub</p>
+    
+    <p class="footer-desc">
+            This website is a community‑driven resource hub for Call of Duty: Black Ops III modding.
+            All external downloads, assets, scripts, and files linked on this site remain the property 
+            of their original creators. No files are hosted or redistributed here.
+    </p>
+    
+    <p class="footer-desc">
+            Asset links, prefabs, FX, models, and tools referenced on this website are credited to 
+            <a href="https://www.devraw.net" target="_blank">Devraw.net</a> and other respective authors.
+            This site provides organized links only and does not claim ownership of any third‑party content.
+    </p>
+    
+    <p class="footer-desc">
+            BO3 Modding Hub is a non‑commercial fan project created to help modders learn, discover, 
+            and improve their custom content. All trademarks and game assets belong to their respective owners.
+    </p>
+    
+    <p class="footer-bottom">
+            Community Resource • No File Hosting • External Links Only
+    </p>
+</footer>
+    
+    
+</body>
+</html>
+

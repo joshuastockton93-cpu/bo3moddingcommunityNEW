@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <h2>Login</h2>
+
+        <div id="message" class="auth-message" style="display:none;"></div>
+
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="auth-links">
+            <a href="register.html">Create an account</a>
+        </div>
+    </div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+    const msg = document.getElementById("message");
+
+    if (data.success) {
+        msg.className = "auth-message auth-success";
+        msg.innerText = "Login successful!";
+        msg.style.display = "block";
+        setTimeout(() => window.location.href = "account.html", 800);
+    } else {
+        msg.className = "auth-message auth-error";
+        msg.innerText = data.message || "Invalid login.";
+        msg.style.display = "block";
+    }
+});
+</script>
+<script>
+    async function updateNavbar() {
+        const res = await fetch("/account");
+        const data = await res.json();
+    
+        const nav = document.getElementById("dynamic-nav");
+    
+        if (!nav) return;
+    
+        if (data.loggedIn) {
+            nav.innerHTML = `
+                <a href="account.html">Account</a>
+                <a href="#" id="logoutLink">Logout</a>
+            `;
+    
+            document.getElementById("logoutLink").addEventListener("click", async () => {
+                await fetch("/logout", { method: "POST" });
+                window.location.href = "login.html";
+            });
+    
+        } else {
+            nav.innerHTML = `
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            `;
+        }
+    }
+    
+    updateNavbar();
+    </script>
+    
+</body>
+</html>

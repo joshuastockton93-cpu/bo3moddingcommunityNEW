@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Account - BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="auth-container">
+    <h2>Your Account</h2>
+
+    <div id="message" class="auth-message" style="display:none;"></div>
+
+    <!-- USER INFO -->
+    <div id="userInfo" style="margin-bottom: 25px; text-align:center;">
+        <p style="color:#ff7a00; font-size:18px;"><strong>Loading account...</strong></p>
+    </div>
+
+    <hr style="border: 1px solid #222; margin: 25px 0;">
+
+    <!-- UPDATE PROFILE -->
+    <h3 style="color:#ff7a00; text-align:center;">Update Profile</h3>
+
+    <form id="updateForm">
+        <input type="text" id="username" placeholder="New Username">
+        <input type="email" id="email" placeholder="New Email">
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <hr style="border: 1px solid #222; margin: 25px 0;">
+
+    <!-- CHANGE PASSWORD -->
+    <h3 style="color:#ff7a00; text-align:center;">Change Password</h3>
+
+    <form id="passwordForm">
+        <input type="password" id="oldPassword" placeholder="Current Password" required>
+        <input type="password" id="newPassword" placeholder="New Password" required>
+
+        <button type="submit">Update Password</button>
+    </form>
+
+    <div class="auth-links" style="margin-top:25px;">
+        <a href="#" id="logoutBtn">Logout</a>
+    </div>
+</div>
+
+<script>
+// =========================
+// LOAD USER ACCOUNT DATA
+// =========================
+async function loadAccount() {
+    const res = await fetch("/account");
+    const data = await res.json();
+
+    const userInfo = document.getElementById("userInfo");
+
+    if (!data.loggedIn) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    userInfo.innerHTML = `
+        <p><strong>Username:</strong> ${data.username}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+    `;
+}
+
+loadAccount();
+
+// =========================
+// UPDATE PROFILE
+// =========================
+document.getElementById("updateForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    const res = await fetch("/update-profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email })
+    });
+
+    const data = await res.json();
+    const msg = document.getElementById("message");
+
+    if (data.success) {
+        msg.className = "auth-message auth-success";
+        msg.innerText = "Profile updated!";
+        msg.style.display = "block";
+        loadAccount();
+    } else {
+        msg.className = "auth-message auth-error";
+        msg.innerText = data.message || "Update failed.";
+        msg.style.display = "block";
+    }
+});
+
+// =========================
+// CHANGE PASSWORD
+// =========================
+document.getElementById("passwordForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const oldPassword = document.getElementById("oldPassword").value.trim();
+    const newPassword = document.getElementById("newPassword").value.trim();
+
+    const res = await fetch("/change-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ oldPassword, newPassword })
+    });
+
+    const data = await res.json();
+    const msg = document.getElementById("message");
+
+    if (data.success) {
+        msg.className = "auth-message auth-success";
+        msg.innerText = "Password updated!";
+        msg.style.display = "block";
+    } else {
+        msg.className = "auth-message auth-error";
+        msg.innerText = data.message || "Password update failed.";
+        msg.style.display = "block";
+    }
+});
+
+// =========================
+// LOGOUT
+// =========================
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+    await fetch("/logout", { method: "POST" });
+    window.location.href = "login.html";
+});
+</script>
+<script>
+    async function updateNavbar() {
+        const res = await fetch("/account");
+        const data = await res.json();
+    
+        const nav = document.getElementById("dynamic-nav");
+    
+        if (!nav) return;
+    
+        if (data.loggedIn) {
+            nav.innerHTML = `
+                <a href="account.html">Account</a>
+                <a href="#" id="logoutLink">Logout</a>
+            `;
+    
+            document.getElementById("logoutLink").addEventListener("click", async () => {
+                await fetch("/logout", { method: "POST" });
+                window.location.href = "login.html";
+            });
+    
+        } else {
+            nav.innerHTML = `
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            `;
+        }
+    }
+    
+    updateNavbar();
+    </script>
+    
+</body>
+</html>

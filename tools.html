@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tools & Utilities - BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">BO3 MODDING HUB</div>
+    
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="mods.html">Mods</a>
+            <a href="tutorials.html">Tutorials</a>
+            <a href="tools.html">Tools</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="community.html">Community</a>
+    
+            <!-- ▼ NEW INFO DROPDOWN ▼ -->
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Info</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="credits.html">Credits</a>
+                    <a href="external-links.html">External Links Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                </div>
+            </div>
+            <!-- ▲ END DROPDOWN ▲ -->
+    
+            <div id="dynamic-nav" class="nav-right"></div> <!-- KEEP THIS -->
+        </nav>
+    </header>
+    
+    <section class="tools-page">
+
+        <h1>Tools & Utilities</h1>
+        <p class="subtitle">Essential tools for Black Ops 3 modding.</p>
+    
+        <!-- CORE TOOLS -->
+        <div class="tool-card">
+            <h2>GSC Debug Tool</h2>
+            <p>Debug scripts, track errors, and speed up development.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>FX Asset Pack</h2>
+            <p>A complete library of modern FX assets for BO3.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Material Setup Guide</h2>
+            <p>Learn how to create and configure materials in APE.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <!-- ADDITIONAL UTILITIES -->
+        <h2 class="section-title">Additional Utilities</h2>
+    
+        <div class="tool-card">
+            <h2>Radiant Hotkeys</h2>
+            <p>A full list of Radiant shortcuts to speed up mapping and improve workflow efficiency.</p>
+            <a class="btn" href="hotkeys.html">View Hotkeys</a>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Weapon Porting Tools</h2>
+            <p>Everything required for importing weapons into BO3, including rigging helpers and conversion utilities.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Model & Texture Tools</h2>
+            <p>Convert, optimize, and prepare assets for BO3.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <!-- NEW: ADVANCED TOOLS -->
+        <h2 class="section-title">Advanced Tools</h2>
+    
+        <div class="tool-card">
+            <h2>BO3 Asset Validator</h2>
+            <p>Scan your mod for missing assets and broken paths.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Map Performance Analyzer</h2>
+            <p>Analyze entity counts, FX usage, and performance hotspots.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Lighting Preview Tool</h2>
+            <p>Preview lighting setups and LUTs before importing.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <!-- NEW: RECOMMENDED EXTERNAL TOOLS -->
+        <h2 class="section-title">Recommended External Tools</h2>
+    
+        <div class="tool-card">
+            <h2>Blender Export Tools</h2>
+            <p>Export models and animations into BO3‑compatible formats.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Substance Painter Templates</h2>
+            <p>BO3‑ready PBR templates for high‑quality materials.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Audacity Sound Tools</h2>
+            <p>Prepare and convert audio files for BO3 sound aliases.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <!-- NEW: MODDING PIPELINES -->
+        <h2 class="section-title">Modding Pipelines</h2>
+    
+        <div class="tool-card">
+            <h2>Weapon Porting Pipeline</h2>
+            <p>A full workflow for porting weapons into BO3.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>Character Rigging Pipeline</h2>
+            <p>Guide for rigging and importing custom characters.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <div class="tool-card">
+            <h2>FX Creation Pipeline</h2>
+            <p>Learn how to create custom FX using APE and Radiant.</p>
+            <span class="coming-soon">Coming Soon</span>
+        </div>
+    
+        <!-- NEW: TROUBLESHOOTING -->
+        <h2 class="section-title">Troubleshooting Tools</h2>
+    
+        <div class="tool-card">
+            <h2>Log Analyzer</h2>
+            <div class="beta-warning">
+                <strong>⚠ Log Analyzer (BETA)</strong>
+                <p>
+                    This tool is still in active development. Results may not be fully accurate, 
+                    and some BO3-specific errors may not yet be detected. Please report issues 
+                    or false positives to help improve the analyzer.
+                </p>
+            </div>
+        
+            <p>
+                The Log Analyzer helps you diagnose issues in your BO3 mod by scanning your 
+                <strong>console.log</strong>, <strong>linker logs</strong>, and <strong>compile output</strong> 
+                for common errors, missing assets, script issues, and warnings.
+            </p>
+        
+            <h3 class="log-subtitle">What It Detects</h3>
+            <ul class="log-list">
+                <li>Missing models, images, materials, and sounds</li>
+                <li>Script compile errors and undefined functions</li>
+                <li>Broken asset paths in zone files</li>
+                <li>Radiant entity warnings</li>
+                <li>FX or sound alias loading failures</li>
+                <li>Memory or performance warnings</li>
+            </ul>
+        
+            <h3 class="log-subtitle">How It Works</h3>
+            <p>
+                Paste your log into the analyzer below and it will automatically highlight 
+                errors, warnings, and potential fixes. This tool is designed to help new and 
+                experienced Map Makers quickly identify problems without digging through thousands 
+                of lines manually.
+            </p>
+        
+            <textarea class="log-input" placeholder="Paste your BO3 log here..."></textarea>
+        
+            <button class="btn analyze-btn">Analyze Log</button>
+        
+            <div class="log-output">
+                <h3>Analysis Results</h3>
+                <p class="log-placeholder">Your results will appear here after analysis.</p>
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <h2>Steam Workshop Generator</h2>
+            <span class="coming-soon">Coming Soon</span>
+            <p>
+                A powerful tool that will automatically generate long, Steam‑formatted Workshop 
+                descriptions based on your map details, features, credits, and more.
+            </p>
+            <p>
+                This generator will support full Steam BBCode formatting, including headers, lists, 
+                italics, bold text, and more — following the official formatting rules from Steam.
+            </p>
+        </div>
+    
+    </section>    
+    
+    <script>
+        async function updateNavbar() {
+            const res = await fetch("/account");
+            const data = await res.json();
+        
+            const nav = document.getElementById("dynamic-nav");
+        
+            if (!nav) return;
+        
+            if (data.loggedIn) {
+                nav.innerHTML = `
+                    <a href="account.html">Account</a>
+                    <a href="#" id="logoutLink">Logout</a>
+                `;
+        
+                document.getElementById("logoutLink").addEventListener("click", async () => {
+                    await fetch("/logout", { method: "POST" });
+                    window.location.href = "login.html";
+                });
+        
+            } else {
+                nav.innerHTML = `
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+                `;
+            }
+        }
+        
+        updateNavbar();
+</script>
+<script>
+    document.querySelector(".analyze-btn").addEventListener("click", () => {
+        const input = document.querySelector(".log-input").value;
+        const output = document.querySelector(".log-output");
+        const placeholder = document.querySelector(".log-placeholder");
+    
+        if (!input.trim()) {
+            placeholder.innerText = "Please paste a log before analyzing.";
+            return;
+        }
+    
+        // Clear previous results
+        output.innerHTML = "<h3>Analysis Results</h3>";
+    
+        const lines = input.split("\n");
+        let errors = [];
+        let warnings = [];
+        let missingAssets = [];
+        let scriptErrors = [];
+        let fxErrors = [];
+        let soundErrors = [];
+        let duplicateGDT = [];
+        let duplicateGBT = [];
+    
+        // Patterns for detection
+        const patterns = {
+            error: /(ERROR|Error|error|ERR)/,
+            warning: /(WARNING|Warning|warning)/,
+            missing: /(missing|not found|could not load|failed to load)/i,
+            script: /(script compile error|undefined function|bad syntax|unknown function)/i,
+            fx: /(fx|effect) (missing|failed|not found)/i,
+            sound: /(sound|alias) (missing|failed|not found)/i
+        };
+    
+        // Scan each line
+        lines.forEach((line, index) => {
+            if (patterns.error.test(line)) errors.push({ line, index });
+            if (patterns.warning.test(line)) warnings.push({ line, index });
+            if (patterns.missing.test(line)) missingAssets.push({ line, index });
+            if (patterns.script.test(line)) scriptErrors.push({ line, index });
+            if (patterns.fx.test(line)) fxErrors.push({ line, index });
+            if (patterns.sound.test(line)) soundErrors.push({ line, index });
+            // Duplicate GDT / GBT detection
+            if (line.includes("duplicate") && line.includes(".gdt")) {
+                duplicateGDT.push({ line, index });
+            }
+
+            if (line.includes("duplicate") && line.includes(".gbt")) {
+                duplicateGBT.push({ line, index });
+            }
+        });
+    
+        // Helper to print sections
+        function printSection(title, list, color) {
+            if (list.length === 0) return;
+    
+            const section = document.createElement("div");
+            section.style.marginBottom = "15px";
+    
+            const header = document.createElement("h4");
+            header.innerText = `${title} (${list.length})`;
+            header.style.color = color;
+            section.appendChild(header);
+    
+            list.forEach(item => {
+                const p = document.createElement("p");
+                p.innerHTML = `<strong>Line ${item.index + 1}:</strong> ${item.line}`;
+                p.style.color = "#ccc";
+                p.style.marginLeft = "10px";
+                section.appendChild(p);
+            });
+    
+            output.appendChild(section);
+        }
+    
+        // Print results
+        printSection("Errors", errors, "#ff4d4d");
+        printSection("Warnings", warnings, "#ffcc00");
+        printSection("Missing Assets", missingAssets, "#ff7a00");
+        printSection("Script Errors", scriptErrors, "#ff4d4d");
+        printSection("FX Issues", fxErrors, "#ff7a00");
+        printSection("Sound Issues", soundErrors, "#ff7a00");
+        printSection("Duplicate GDT Entries", duplicateGDT, "#ff4d4d");
+        printSection("Duplicate GBT Entries", duplicateGBT, "#ff4d4d");
+    
+        // If nothing found
+        if (
+            errors.length === 0 &&
+            warnings.length === 0 &&
+            missingAssets.length === 0 &&
+            scriptErrors.length === 0 &&
+            fxErrors.length === 0 &&
+            soundErrors.length === 0
+        ) {
+            output.innerHTML += `<p style="color:#7aff7a;">No issues detected. Your log looks clean.</p>`;
+        }
+    });
+</script>
+<script>
+    document.querySelector(".workshop-generate-btn").addEventListener("click", () => {
+    
+        const name = document.querySelector(".workshop-name").value.trim() || "My BO3 Map";
+        const tagline = document.querySelector(".workshop-tagline").value.trim();
+        const features = document.querySelector(".workshop-features").value.trim().split("\n").filter(x => x);
+        const credits = document.querySelector(".workshop-credits").value.trim().split("\n").filter(x => x);
+        const notes = document.querySelector(".workshop-notes").value.trim();
+    
+        // --- EXPANSION HELPERS ---
+        function expandTagline(text) {
+            if (!text) return "";
+            return `\n[i]${text}[/i]\n\n${text} is the core theme of this map. This experience was designed to capture the atmosphere and gameplay style that players expect from high‑quality BO3 custom maps. Every area, mechanic, and encounter was built around this concept to deliver a unique and memorable playthrough.`;
+        }
+    
+        function expandFeature(f) {
+            return `[*] ${f} — This feature has been implemented to enhance gameplay and provide players with a more engaging experience.`;
+        }
+    
+        function expandCredit(c) {
+            return `[*] ${c} — Huge thanks for contributing to the development of this project.`;
+        }
+    
+        function expandNotes(n) {
+            return `${n}\n\nThese additional notes help explain the design choices, inspirations, or technical details behind the map.`;
+        }
+    
+        // --- BUILD DESCRIPTION ---
+        let output = `[h1]${name}[/h1]\n`;
+    
+        // Expanded tagline section
+        output += expandTagline(tagline);
+    
+        // Expanded features
+        if (features.length) {
+            output += `\n[h1]Features[/h1]\n[list]\n`;
+            features.forEach(f => output += expandFeature(f) + "\n");
+            output += `[/list]\n`;
+        }
+    
+        // Expanded credits
+        if (credits.length) {
+            output += `\n[h1]Credits[/h1]\n[list]\n`;
+            credits.forEach(c => output += expandCredit(c) + "\n");
+            output += `[/list]\n`;
+        }
+    
+        // Expanded notes
+        if (notes) {
+            output += `\n[h1]Additional Notes[/h1]\n${expandNotes(notes)}\n`;
+        }
+    
+        // Final call to action
+        output += `\nIf you enjoy the map, please consider rating it on the Workshop! Your support helps the project grow and encourages future updates.`;
+    
+        // Output to page
+        document.querySelector(".workshop-output").innerHTML = `
+            <h3>Generated Steam Description</h3>
+            <pre style="white-space:pre-wrap;color:#ccc;font-family:monospace;">${output}</pre>
+        `;
+    });
+</script>       
+</body>
+</html>

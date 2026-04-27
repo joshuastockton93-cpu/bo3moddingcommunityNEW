@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Community - BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">BO3 MODDING HUB</div>
+    
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="mods.html">Mods</a>
+            <a href="tutorials.html">Tutorials</a>
+            <a href="tools.html">Tools</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="community.html">Community</a>
+    
+            <!-- ▼ NEW INFO DROPDOWN ▼ -->
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Info ▾</a>
+                <div class="dropdown-box">
+                    <a href="about.html">About</a>
+                    <a href="credits.html">Credits</a>
+                    <a href="external-links.html">External Links Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                </div>
+            </div>
+            <!-- ▲ END DROPDOWN ▲ -->
+    
+            <div id="dynamic-nav" class="nav-right"></div> <!-- KEEP THIS -->
+        </nav>
+    </header>
+    
+    
+
+    <section class="community-page">
+
+        <h1>Community</h1>
+        <p class="subtitle">Join the BO3 modding community and connect with creators, mappers, scripters, and players.</p>
+    
+        <!-- Discord Section -->
+        <div class="community-card">
+            <h2>Join Our Discord</h2>
+            <p>Chat with modders, get help, share your work, and stay updated with the latest BO3 tools and releases.</p>
+            <a class="btn" href="#" target="_blank">Join Discord</a>
+        </div>
+    
+        <!-- Rules Section -->
+        <div class="community-card">
+            <h2>Community Guidelines</h2>
+            <ul class="community-list">
+                <li>Be respectful and constructive</li>
+                <li>Help others when possible</li>
+                <li>No harassment or toxicity</li>
+                <li>Keep feedback helpful and specific</li>
+                <li>Follow channel topics and rules</li>
+            </ul>
+            <a class="btn" href="#">Read Full Rules</a>
+        </div>
+    
+        <!-- Support Section -->
+        <div class="community-card">
+            <h2>Support Channels</h2>
+            <p>Need help with mapping, scripting, radiant errors, or mod tools? Our support channels are here for you.</p>
+            <a class="btn" href="#">Get Support</a>
+        </div>
+    
+        <!-- NEW: Featured Creators -->
+        <div class="community-card">
+            <h2>Featured Creators</h2>
+            <p>Discover talented modders in the BO3 community.</p>
+            <ul class="community-list">
+                <li>Map Makers</li>
+                <li>Weapon Porters</li>
+                <li>FX Artists</li>
+                <li>Script Developers</li>
+            </ul>
+            <a class="btn" href="#">View Creators</a>
+        </div>
+    
+        <!-- NEW: Community Resources -->
+        <div class="community-card">
+            <h2>Community Resources</h2>
+            <p>Useful links, guides, and tools shared by the community.</p>
+            <ul class="community-list">
+                <li>Beginner Mapping Guides</li>
+                <li>Script Snippets & Utilities</li>
+                <li>FX Packs & Prefabs</li>
+                <li>Model & Texture Resources</li>
+            </ul>
+            <a class="btn" href="#">Browse Resources</a>
+        </div>
+    
+        <!-- NEW: Events -->
+        <div class="community-card">
+            <h2>Events & Challenges</h2>
+            <p>Participate in mapping challenges, modding jams, and community events.</p>
+            <a class="btn" href="#">View Events</a>
+        </div>
+    
+    </section>
+
+</script>
+<script>
+    async function updateNavbar() {
+        const res = await fetch("/account");
+        const data = await res.json();
+    
+        const nav = document.getElementById("dynamic-nav");
+    
+        if (!nav) return;
+    
+        if (data.loggedIn) {
+            nav.innerHTML = `
+                <a href="account.html">Account</a>
+                <a href="#" id="logoutLink">Logout</a>
+            `;
+    
+            document.getElementById("logoutLink").addEventListener("click", async () => {
+                await fetch("/logout", { method: "POST" });
+                window.location.href = "login.html";
+            });
+    
+        } else {
+            nav.innerHTML = `
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            `;
+        }
+    }
+    
+    updateNavbar();
+    </script>
+    
+</body>
+</html>

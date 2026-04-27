@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roadmap - BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">BO3 MODDING HUB</div>
+    
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="mods.html">Mods</a>
+            <a href="tutorials.html">Tutorials</a>
+            <a href="tools.html">Tools</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="community.html">Community</a>
+    
+            <!-- ▼ NEW INFO DROPDOWN ▼ -->
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Info</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="credits.html">Credits</a>
+                    <a href="external-links.html">External Links Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                </div>
+            </div>
+            <!-- ▲ END DROPDOWN ▲ -->
+    
+            <div id="dynamic-nav" class="nav-right"></div> <!-- KEEP THIS -->
+        </nav>
+    </header>
+    
+    
+
+<section class="page-header">
+    <h1>Roadmap</h1>
+    <p>Upcoming features, improvements, and future plans.</p>
+</section>
+
+<section class="roadmap">
+
+    <h1 class="roadmap-title">Development Roadmap</h1>
+    <p class="roadmap-subtitle">Upcoming features, improvements, and long‑term goals for the BO3 Modding Hub.</p>
+
+    <!-- COMING SOON -->
+    <div class="roadmap-section">
+        <h2>🚀 Coming Soon</h2>
+        <ul class="roadmap-list">
+            <li>📦 <strong>Prefab Library Expansion</strong> — Adding 50+ new prefabs including traps, rooms, and FX setups.</li>
+            <li>🗂 <strong>Mod Categories</strong> — Weapons, Zombies, FX, Materials, Tools.</li>
+            <li>🧑‍🎨 <strong>Creator Profiles</strong> — Showcase modders and their work.</li>
+            <li>🔍 <strong>Improved Mod Browser</strong> — Filters, tags, and search.</li>
+        </ul>
+    </div>
+
+    <!-- PLANNED FEATURES -->
+    <div class="roadmap-section">
+        <h2>📝 Planned Features</h2>
+        <ul class="roadmap-list">
+            <li>📘 Full scripting documentation hub.</li>
+            <li>🎓 Beginner‑friendly mapping tutorials.</li>
+            <li>🖼 Asset preview gallery (weapons, zombies, FX).</li>
+            <li>📤 Community submissions page.</li>
+        </ul>
+    </div>
+
+    <!-- LONG TERM -->
+    <div class="roadmap-section">
+        <h2>🌙 Long‑Term Goals</h2>
+        <ul class="roadmap-list">
+            <li>⚙️ Automatic mod installer.</li>
+            <li>⭐ Prefab sharing system with ratings.</li>
+            <li>🔗 Steam Workshop integration.</li>
+        </ul>
+    </div>
+
+</section>
+
+</section>
+<script>
+    async function updateNavbar() {
+        const res = await fetch("/account");
+        const data = await res.json();
+    
+        const nav = document.getElementById("dynamic-nav");
+    
+        if (!nav) return;
+    
+        if (data.loggedIn) {
+            nav.innerHTML = `
+                <a href="account.html">Account</a>
+                <a href="#" id="logoutLink">Logout</a>
+            `;
+    
+            document.getElementById("logoutLink").addEventListener("click", async () => {
+                await fetch("/logout", { method: "POST" });
+                window.location.href = "login.html";
+            });
+    
+        } else {
+            nav.innerHTML = `
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            `;
+        }
+    }
+    
+    updateNavbar();
+</script>
+
+</body>
+</html>

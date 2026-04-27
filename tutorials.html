@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coming Soon - BO3 Modding Hub</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Extra styling ONLY for this page */
+        .coming-soon-wrapper {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .coming-box {
+            background: #1a1a1a;
+            border: 2px solid #3c444d;
+            max-width: 700px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px #000;
+        }
+
+        .warning-icon {
+            font-size: 60px;
+            color: #ff6600;
+            margin-bottom: 20px;
+        }
+
+        .coming-title {
+            font-size: 42px;
+            color: #ff6600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff6600; }
+            to   { text-shadow: 0 0 25px #ff3300; }
+        }
+
+        .coming-text {
+            font-size: 18px;
+            color: #c9d1d9;
+            margin-bottom: 25px;
+        }
+
+        .progress-bar {
+            width: 80%;
+            height: 12px;
+            background: #333;
+            margin: 20px auto;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 35%;
+            height: 100%;
+            background: #ff6600;
+            animation: loading 3s infinite;
+        }
+
+        @keyframes loading {
+            0% { width: 10%; }
+            50% { width: 60%; }
+            100% { width: 35%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">BO3 MODDING HUB</div>
+    
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="mods.html">Mods</a>
+            <a href="tutorials.html">Tutorials</a>
+            <a href="tools.html">Tools</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="community.html">Community</a>
+    
+            <!-- ▼ NEW INFO DROPDOWN ▼ -->
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Info</a>
+                <div class="dropdown-content">
+                    <a href="about.html">About</a>
+                    <a href="credits.html">Credits</a>
+                    <a href="external-links.html">External Links Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                </div>
+            </div>
+            <!-- ▲ END DROPDOWN ▲ -->
+    
+            <div id="dynamic-nav" class="nav-right"></div> <!-- KEEP THIS -->
+        </nav>
+    </header>
+    
+
+<section class="coming-soon-wrapper">
+    <div class="coming-box">
+
+        <div class="warning-icon">⚠️</div>
+
+        <div class="coming-title">Under Construction</div>
+
+        <p class="coming-text">
+            The Tutorials section is currently being built.  
+            Mapping, scripting, FX, materials, and weapon guides will be added soon.
+        </p>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <p class="coming-text">
+            Check back later for full step‑by‑step guides and downloadable resources.
+        </p>
+
+    </div>
+</section>
+<script>
+    async function updateNavbar() {
+        const res = await fetch("/account");
+        const data = await res.json();
+    
+        const nav = document.getElementById("dynamic-nav");
+    
+        if (!nav) return;
+    
+        if (data.loggedIn) {
+            nav.innerHTML = `
+                <a href="account.html">Account</a>
+                <a href="#" id="logoutLink">Logout</a>
+            `;
+    
+            document.getElementById("logoutLink").addEventListener("click", async () => {
+                await fetch("/logout", { method: "POST" });
+                window.location.href = "login.html";
+            });
+    
+        } else {
+            nav.innerHTML = `
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            `;
+        }
+    }
+    
+    updateNavbar();
+</script>
+
+</body>
+</html>
