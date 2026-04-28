@@ -1,6 +1,12 @@
 {
+  "name": "bo3moddingcommunity",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "sqlite": "^5.1.1",
-    "sqlite3": "^6.0.1"
+    "express": "^4.22.1"
   }
 }
